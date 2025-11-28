@@ -53,5 +53,21 @@ export const profileImages = {
   profilePicture: profilePicture,
 };
 
+import walletconnectImage from './walletconnect.webp';
+import cryptoComOnchainImage from './crypto.com-onchain.webp';
+import bitgetWalletImage from './bitgetwallet.webp';
+import uniswapWalletImage from './uniswapwallet.webp';
+import safepalImage from './safepal.webp';
+
+export const walletImages = {
+  walletconnect: walletconnectImage,
+  cryptoComOnchain: cryptoComOnchainImage,
+  bitget: bitgetWalletImage,
+  uniswap: uniswapWalletImage,
+  safepal: safepalImage,
+  trust: walletconnectImage, // Using walletconnect as placeholder - replace when trust wallet image is available
+  allWallets: walletconnectImage, // Using walletconnect as placeholder - replace when all wallets image is available
+};
+
 export default carouselImages;
 

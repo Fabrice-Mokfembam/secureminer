@@ -3,9 +3,11 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { carouselImages } from '../../../assets';
 import { faqData } from '../Utils/faqData';
+import { useConnectWallet } from '../../../Contexts/ConnectWalletContext';
 
 function HomePage() {
   const navigate = useNavigate();
+  const { openModal } = useConnectWallet();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [usdBalance, setUsdBalance] = useState(100);
   const [openFaqId, setOpenFaqId] = useState<number | null>(null);
@@ -52,7 +54,7 @@ function HomePage() {
             </button>
 
             {/* Scrollable Content */}
-            <div className="flex-1 overflow-y-auto px-6 pt-6 pb-4">
+            <div className="flex-1 overflow-y-scroll px-6 pt-6 pb-4 scrollbar-visible">
               {modalPage === 1 ? (
                 <div className="space-y-4 text-[var(--color-text-primary)] text-sm leading-relaxed">
                   {/* Title */}
@@ -262,7 +264,10 @@ function HomePage() {
       <div className="relative overflow-hidden rounded-2xl shadow-2xl mb-4">
         <div className="relative p-4">
           <nav className="bg-gradient-to-r from-[var(--color-bg-secondary)] to-[var(--color-bg-tertiary)] rounded-xl p-3 flex items-center justify-around border border-[var(--color-bg-border)]">
-            <button className="flex flex-col items-center gap-2 text-[var(--color-text-primary)] transition-colors">
+            <button 
+              onClick={openModal}
+              className="flex flex-col items-center gap-2 text-[var(--color-text-primary)] transition-colors"
+            >
               <Bell className="w-6 h-6 text-[var(--color-accent-orange)]" strokeWidth={2.5} />
               <span className="text-xs text-[var(--color-text-primary)]">Notification</span>
             </button>
@@ -277,7 +282,10 @@ function HomePage() {
               <Info className="w-6 h-6 text-[var(--color-accent-orange)]" strokeWidth={2.5} />
               <span className="text-xs text-[var(--color-text-primary)]">About</span>
             </button>
-            <button className="flex flex-col items-center gap-2 text-[var(--color-text-primary)] transition-colors">
+            <button 
+              onClick={openModal}
+              className="flex flex-col items-center gap-2 text-[var(--color-text-primary)] transition-colors"
+            >
               <Share2 className="w-6 h-6 text-[var(--color-accent-orange)]" strokeWidth={2.5} />
               <span className="text-xs text-[var(--color-text-primary)]">Invite</span>
             </button>
@@ -305,7 +313,10 @@ function HomePage() {
               </div>
 
               {/* Connect Wallet Button */}
-              <button className="w-full py-3 bg-[var(--color-accent-orange)] hover:bg-[var(--color-accent-orange-hover)] text-black font-semibold text-base rounded-lg flex items-center justify-center gap-2 transition-all">
+              <button 
+                onClick={openModal}
+                className="w-full py-3 bg-[var(--color-accent-orange)] hover:bg-[var(--color-accent-orange-hover)] text-black font-semibold text-base rounded-lg flex items-center justify-center gap-2 transition-all"
+              >
                 <Wallet className="w-5 h-5" />
                 Connect Wallet
               </button>

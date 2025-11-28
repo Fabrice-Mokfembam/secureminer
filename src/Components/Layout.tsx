@@ -8,10 +8,12 @@ import {
   Smartphone,
   Globe
 } from 'lucide-react';
+import { useConnectWallet } from '../Contexts/ConnectWalletContext';
 
 function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { openModal } = useConnectWallet();
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -22,7 +24,10 @@ function Layout() {
         {/* Fixed Header - Only Top Bar */}
         <header className="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-[450px] z-50 glass-strong border-b border-[var(--color-bg-border)] backdrop-blur-md">
           <div className="flex items-center justify-between px-4 py-3">
-            <button className="px-4 py-2 bg-[var(--color-accent-orange)] hover:bg-[var(--color-accent-orange-hover)] text-[var(--color-text-on-orange)] font-semibold rounded-lg text-sm transition-all hover:shadow-lg">
+            <button 
+              onClick={openModal}
+              className="px-4 py-2 bg-[var(--color-accent-orange)] hover:bg-[var(--color-accent-orange-hover)] text-[var(--color-text-on-orange)] font-semibold rounded-lg text-sm transition-all hover:shadow-lg"
+            >
               Connect Wallet
             </button>
             <div className="flex items-center gap-2">
