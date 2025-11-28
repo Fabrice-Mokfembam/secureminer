@@ -1,4 +1,4 @@
-import { Wallet, ChevronRight, Bell, Headphones, Info, Share2, Shield, Users, TrendingUp, ChevronLeft } from 'lucide-react';
+import { Wallet, ChevronRight, Bell, Headphones, Info, Share2, Shield, Users, TrendingUp, ChevronLeft, X, Check, ChevronRight as ChevronRightIcon } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { carouselImages } from '../../../assets';
@@ -9,6 +9,8 @@ function HomePage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [usdBalance, setUsdBalance] = useState(100);
   const [openFaqId, setOpenFaqId] = useState<number | null>(null);
+  const [showModal, setShowModal] = useState(true);
+  const [modalPage, setModalPage] = useState(1);
 
   // Calculate earnings based on USD balance
   // Assuming: Hourly rate is 0.283333% of balance, Daily is 6.8% of balance
@@ -36,7 +38,184 @@ function HomePage() {
   };
 
   return (
-    <div className="pb-4">
+    <>
+      {/* Introduction Modal */}
+      {showModal && (
+        <div className="fixed top-16 bottom-20 left-1/2 -translate-x-1/2 w-full max-w-[450px] z-[60] flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
+          <div className="w-full bg-gradient-to-r from-[var(--color-bg-secondary)] to-[var(--color-bg-tertiary)] rounded-2xl border border-[var(--color-bg-border)] shadow-2xl relative h-full max-h-full flex flex-col">
+            {/* Close Button */}
+            <button
+              onClick={() => setShowModal(false)}
+              className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[var(--color-bg-main)] border border-[var(--color-bg-border)] flex items-center justify-center hover:bg-[var(--color-bg-tertiary)] transition-colors z-10"
+            >
+              <X className="w-4 h-4 text-[var(--color-text-primary)]" />
+            </button>
+
+            {/* Scrollable Content */}
+            <div className="flex-1 overflow-y-auto px-6 pt-6 pb-4">
+              {modalPage === 1 ? (
+                <div className="space-y-4 text-[var(--color-text-primary)] text-sm leading-relaxed">
+                  {/* Title */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <Shield className="w-5 h-5 text-[var(--color-accent-orange)]" />
+                    <h2 className="text-lg font-bold">Introduction to zero deposit mining platform</h2>
+                  </div>
+
+                  <p>
+                    We have launched a new, safe and transparent way to increase the value of crypto assets - the safe-mining mining platform.
+                  </p>
+
+                  {/* Highlighted Feature */}
+                  <div className="flex items-start gap-2 bg-[var(--color-bg-main)] rounded-lg p-3 border border-[var(--color-accent-orange)]">
+                    <Check className="w-5 h-5 text-[var(--color-accent-orange)] flex-shrink-0 mt-0.5" strokeWidth={3} />
+                    <p className="font-medium">No need to recharge, funds are always in your hands</p>
+                  </div>
+
+                  <p>
+                    Users do not need to recharge or transfer any USDT/USDC to the platform. They only need to save USDT/USDC in their wallets to participate in mining.
+                  </p>
+
+                  <p>
+                    Just like you deposit funds into your bank account, the platform automatically starts calculating returns based on the balance in your wallet.
+                  </p>
+
+                  <div className="text-center py-2 text-[var(--color-text-muted)]">
+                    ==========================
+                  </div>
+
+                  <p>
+                    The power of a team is greater than that of an individual. An excellent team can stimulate the potential of each member and achieve higher goals. We sincerely invite capable leaders to lead the team to join us.
+                  </p>
+
+                  <p>
+                    The salary and benefits of the team that achieves the goal are as follows:
+                  </p>
+
+                  <p>
+                    A-level friends (direct recommendation): Get 20% of the mining income from their wallet balance as commission.
+                  </p>
+
+                  <p>
+                    B-level friends (friends recommended by A-level): Get 7% of the mining income from their wallet balance as commission.
+                  </p>
+
+                  <p>
+                    C-level friends (friends recommended by B-level): Get 3% of the mining income from their wallet balance as commission.
+                  </p>
+
+                  <p>
+                    Tell your team that the company registration invitation link can be promoted on any social media
+                  </p>
+
+                  <p>
+                    Facebook, Twitter, YouTube, instarma, Tiktok, KAO KAO, WhatsApp group, Telegram group, etc.
+                  </p>
+                </div>
+              ) : (
+                <div className="space-y-4 text-[var(--color-text-primary)] text-sm leading-relaxed">
+                  {/* Title */}
+                  <div className="flex items-center gap-2 mb-4">
+                    <Wallet className="w-5 h-5 text-[var(--color-accent-orange)]" />
+                    <h2 className="text-lg font-bold">💰 Trust Mining Income Explanation</h2>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p>Mine-1: Wallet USDT (10-99), daily income: 5.8%</p>
+                    <p>Mine-2: Wallet USDT (100 - 499), daily income: 6.8%</p>
+                    <p>Mine-3: Wallet USDT (500 - 999), daily income: 7.8%</p>
+                    <p>Mine-4: Wallet USDT (1,000 - 4,999), daily income: 9.8%</p>
+                    <p>Mine-5: Wallet USDT (5,000 - 9,999), daily income: 11.8%</p>
+                    <p>Mine-6: Wallet USDT (10,000 - 29,999), daily income: 13.8%</p>
+                    <p>Mine-7: Wallet USDT (30,000 - 49,999), daily income: 16.8%</p>
+                    <p>Mine-8: Wallet USDT (50,000 - 99,999), daily income: 20.8%</p>
+                  </div>
+
+                  <p className="text-[var(--color-text-muted)]">
+                    --Currently only supports Polygon USDT/USDC, ETH USDT/USDC, BSC USDT/USDC
+                  </p>
+
+                  <div className="flex items-center gap-2 mt-6 mb-4">
+                    <Info className="w-5 h-5 text-[var(--color-accent-orange)]" />
+                    <h3 className="text-base font-bold">⚙️ How it works is clear at a glance:</h3>
+                  </div>
+
+                  <div className="space-y-3">
+                    <div>
+                      <p className="font-medium mb-1">1. Store USDT in your own wallet</p>
+                      <p className="text-[var(--color-text-muted)] ml-4">
+                        ➤ You have 100% control over your assets and the platform has no right to manipulate your funds.
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="font-medium mb-1">2. Connect Trust Wallet to our mining platform</p>
+                      <p className="text-[var(--color-text-muted)] ml-4">
+                        ➤ Simply authorize to view your balance, no transfer or pledge required.
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="font-medium mb-1">3. The platform's smart contract automatically identifies the wallet balance</p>
+                      <p className="text-[var(--color-text-muted)] ml-4">
+                        ➤ Generate mining power based on your balance, bringing you daily income.
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="font-medium mb-1">4. Automatic daily settlement of income</p>
+                      <p className="text-[var(--color-text-muted)] ml-4">
+                        ➤ You can claim your earnings once every 24 hours and withdraw and use them at any time.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex justify-center gap-2 py-3 border-t border-[var(--color-bg-border)]">
+              <div
+                className={`w-2 h-2 rounded-full transition-all ${
+                  modalPage === 1
+                    ? 'bg-[var(--color-accent-orange)] w-6'
+                    : 'bg-[var(--color-text-muted)] border border-[var(--color-text-muted)]'
+                }`}
+              />
+              <div
+                className={`w-2 h-2 rounded-full transition-all ${
+                  modalPage === 2
+                    ? 'bg-[var(--color-accent-orange)] w-6'
+                    : 'bg-[var(--color-text-muted)] border border-[var(--color-text-muted)]'
+                }`}
+              />
+            </div>
+
+            {/* Navigation Buttons */}
+            <div className="flex gap-3 px-6 pb-6">
+              <button
+                onClick={() => setModalPage(1)}
+                disabled={modalPage === 1}
+                className={`flex-1 py-3 rounded-lg font-semibold transition-all ${
+                  modalPage === 1
+                    ? 'bg-[var(--color-bg-main)] text-[var(--color-text-muted)] border border-[var(--color-bg-border)] cursor-not-allowed'
+                    : 'bg-[var(--color-bg-main)] text-[var(--color-text-primary)] border border-[var(--color-bg-border)] hover:bg-[var(--color-bg-tertiary)]'
+                }`}
+              >
+                Prev
+              </button>
+              <button
+                onClick={() => modalPage === 1 ? setModalPage(2) : setShowModal(false)}
+                className="flex-1 py-3 bg-[var(--color-accent-orange)] hover:bg-[var(--color-accent-orange-hover)] text-black font-semibold rounded-lg transition-all flex items-center justify-center gap-2"
+              >
+                Next
+                <ChevronRightIcon className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="pb-4">
       {/* Carousel Section */}
       <div className="px-4 py-2 mb-4">
         <div className="relative overflow-hidden rounded-2xl shadow-2xl">
@@ -445,6 +624,7 @@ function HomePage() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

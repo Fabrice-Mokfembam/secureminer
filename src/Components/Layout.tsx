@@ -68,10 +68,8 @@ function Layout() {
             <span className="text-xs">About</span>
           </button>
           <button
-            onClick={() => navigate('/team')}
-            className={`flex flex-col items-center gap-1 transition-colors ${
-              isActive('/team') ? 'text-[var(--color-accent-orange)]' : 'text-[var(--color-text-muted)]'
-            }`}
+            onClick={() => navigate('/')}
+            className="flex flex-col items-center gap-1 transition-colors text-[var(--color-text-muted)]"
           >
             <Users className="w-6 h-6" />
             <span className="text-xs">Team</span>
