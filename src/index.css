@@ -14,7 +14,7 @@
 @theme {
   /* Color Palette */
   --color-carbon-black: #161719;        /* Carbon black */
-  --color-malachite: #FF6500;           /* Orange (replacing green malachite) */
+  --color-malachite: #3B82F6;           /* Blue (replacing orange) */
   --color-black: #05080C;               /* Black */
   --color-black-2: #080809;             /* Black 2 */
   --color-grey-olive: #7E8484;          /* Grey olive */
@@ -30,21 +30,21 @@
   --color-text-primary: #ffffff;         /* Primary text - white */
   --color-text-secondary: #d1d5db;       /* Secondary text - light gray */
   --color-text-muted: #7E8484;           /* Muted text - grey-olive */
-  --color-text-on-orange: #ffffff;       /* Text on orange background - white */
+  --color-text-on-orange: #ffffff;       /* Text on blue background - white */
 
-  /* Accent Colors - Orange (replacing malachite green) */
-  --color-accent-orange: #FF6500;       /* Primary accent - orange */
-  --color-accent-orange-hover: #e55a00;  /* Orange hover state */
-  --color-accent-orange-light: #ff8533;  /* Lighter orange variant */
-  --color-accent-orange-bg: rgba(255, 101, 0, 0.15); /* Orange background with opacity */
+  /* Accent Colors - Blue */
+  --color-accent-orange: #3B82F6;       /* Primary accent - blue */
+  --color-accent-orange-hover: #2563EB;  /* Blue hover state */
+  --color-accent-orange-light: #60A5FA;  /* Lighter blue variant */
+  --color-accent-orange-bg: rgba(59, 130, 246, 0.15); /* Blue background with opacity */
 
   /* Border Colors */
   --color-border: rgba(126, 132, 132, 0.3); /* Default border - grey-olive */
   --color-border-light: rgba(126, 132, 132, 0.5); /* Lighter border */
 
   /* Gradient Colors */
-  --color-gradient-start: #FF6500;       /* Orange */
-  --color-gradient-end: #ff8533;          /* Lighter orange */
+  --color-gradient-start: #3B82F6;       /* Blue */
+  --color-gradient-end: #60A5FA;          /* Lighter blue */
 
   /* Status Colors */
   --color-success: #10b981;              /* Success green */
